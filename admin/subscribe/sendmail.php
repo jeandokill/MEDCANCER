@@ -71,14 +71,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
 
     // Embed logo image as inline attachment
-    $logoFilePath = '../../TheEvent/assets/img/favicon.png';
+    $logoFilePath = '../../Home/assets/img/favicon.png';
     $mail->addEmbeddedImage($logoFilePath, 'logo');
 
     // Send email
     if($mail->send()) {
         echo 'Message has been sent';
         // Redirect back to subscribers.php
-        echo '<script>window.location.href = "/EVENT/admin/subscribe/subscribers.php";</script>';
+        echo '<script>window.location.href = "/Medcancer/admin/subscribe/subscribers.php";</script>';
         exit;
     } else {
         echo 'Message could not be sent.';

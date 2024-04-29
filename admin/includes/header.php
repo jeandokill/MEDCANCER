@@ -5,13 +5,15 @@
 
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
     <meta name="author" content="">
 
     <title> MEDCANCER-admin-Dashboard</title>
-    <link href="/EVENT/TheEvent/assets/img/favicon.png" rel="icon">
-    <link href="/EVENT/TheEvent/assets/img/favicon.png" rel="apple-touch-icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
 
     <!-- Custom fonts for this template-->
     <link href="vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
@@ -25,6 +27,7 @@
 </head>
 
 <body id="page-top">
+
 
     <!-- Page Wrapper -->
     <div id="wrapper">

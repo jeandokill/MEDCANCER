@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $blogId = $_POST['blog_id'];
 
     // Delete data from 'blogs' table
-    $sql = "DELETE FROM blogs WHERE id=$blogId";
+    $sql = "DELETE FROM blog WHERE id=$blogId";
 
     if ($conn->query($sql) === TRUE) {
         echo "Blog deleted successfully!";
@@ -21,6 +21,8 @@ $conn->close();
 <html lang="en">
 
 <head>
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
     <style>
         .btn {
             cursor: pointer; /* Add this style to indicate it's clickable */
@@ -36,7 +38,7 @@ $conn->close();
 
 <body>
     <div class="btn">
-        <a href="admin_blog.php">
+        <a href="add_blog.php">
             <h1>BACK ON BLOG PAGE</h1>
         </a>
     </div>

@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['id'])) {
     $host = "localhost";
     $user = "root";
     $password = "";
-    $database = "EVENT";
+    $database = "event";
     
     $connection = mysqli_connect($host, $user, $password, $database);
 

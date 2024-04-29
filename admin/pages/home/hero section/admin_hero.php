@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $host = "localhost";
     $user = "root";
     $password = "";
-    $database = "EVENT";;
+    $database = "event";;
 
     $connection = mysqli_connect($host, $user, $password, $database);
 
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_close($connection);
 
         // Redirect to admin panel or wherever you want
-        header("Location: /EVENT/admin/index.php"); // Adjust the path as needed
+        header("Location: /Medcancer/admin/index.php"); // Adjust the path as needed
         exit();
     } else {
         echo "Sorry, there was an error uploading your file.";
@@ -42,6 +42,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
     <!-- Styles and meta tags go here -->
     <style>
     body {

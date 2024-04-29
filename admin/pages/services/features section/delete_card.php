@@ -14,15 +14,15 @@ if (isset($_GET['index'])) {
         file_put_contents('data.php', '<?php $servicesContent = ' . var_export($servicesContent, true) . '; ?>');
 
         // Redirect back to admin/index.php
-        header('Location: /EVENT/admin/index.php');
+        header('Location: /Medcancer/admin/index.php');
         exit();
     } else {
         // Invalid index, redirect to admin/index.php or handle accordingly
-        header('Location: /EVENT/admin/index.php');
+        header('Location: /Medcancer/admin/index.php');
         exit();
     }
 } else {
     // No index provided, redirect to admin/index.php or handle accordingly
-    header('Location: /EVENT/admin/index.php');
+    header('Location: /Medcancer/admin/index.php');
     exit();
 }

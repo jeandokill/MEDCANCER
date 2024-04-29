@@ -43,16 +43,16 @@
         }
     </style>
     <!-- Favicon -->
-    <link rel="icon" type="image/jpeg" href="/EVENT/TheEvent/assets/img/FAVICON.JPG">
+    <link rel="icon" type="image/jpeg" href="/Medcancer/Home/assets/img/FAVICON.JPG">
 </head>
 <body style="background-color:black;">
     <div class="container">
         <div class="row justify-content-center align-items-center" style="height: 100vh;">
             <div class="col-md-6 text-center error-container">
-                <img style="width: 150px;" src="/EVENT/TheEvent/assets/img/FAVICON.JPG" alt="Logo" class="logo">
+                <img style="width: 150px;" src="/Medcancer/Home/assets/img/FAVICON.JPG" alt="Logo" class="logo">
                 <h1 class="display-1 error-title">404</h1>
                 <p class="lead error-text">Oops! Page not found.</p>
-                <a href="/EVENT/TheEvent/index.php" class="btn btn-go-home">Go Home</a>
+                <a href="/Medcancer/Home/index.php" class="btn btn-go-home">Go Home</a>
             </div>
         </div>
     </div>

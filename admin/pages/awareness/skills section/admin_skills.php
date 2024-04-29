@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_skills'])) {
     file_put_contents('data.php', '<?php $skillsContent = ' . var_export($skillsContent, true) . '; ?>');
 
     // Redirect back to admin/index.php
-    header('Location: /EVENT/admin/index.php');
+    header('Location: /Medcancer/admin/index.php');
     exit(); // Ensure that the script stops here
 }
 ?>
@@ -44,6 +44,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_skills'])) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
     <title>Admin Panel</title>
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

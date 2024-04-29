@@ -118,8 +118,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 
-
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -127,6 +125,16 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Task Management</title>
     <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .container {
+            padding: 20px;
+        }
+        #backbtn {
+            display: block;
+            margin: 20px auto;
+            width: fit-content;
+        }
+    </style>
 </head>
 <body>
 
@@ -183,7 +191,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <h2 class="my-4">Add New Task</h2>
 
     <div class="container">
-        <h2 class="my-4">Task Management</h2>
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
             <div class="form-group">
                 <label for="name">Name:</label>
@@ -216,21 +223,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             <button type="submit" class="btn btn-primary">Submit</button>
         </form>
     </div>
+    
+    <a href="/Medcancer/admin/index.php" class="btn btn-secondary mt-3" id="backbtn">Back to admin panel</a>
+</div>
 
 </body>
-<a href="/EVENT/admin/index.php" class="btn btn-secondary mt-3" id="backbtn">Back to admin panel</a>
-        <style>
-            #backbtn
-             {
-                display: block;
-                margin: auto;
-                margin-top: 20px; 
-                margin-right: 50%;
-                margin-left: 30%;
-                background-color: blue;
-                
-                /* You can adjust the margin-top as needed */
-            }
-        </style>
-    </div>
 </html>

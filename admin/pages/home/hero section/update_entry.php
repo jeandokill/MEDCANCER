@@ -6,7 +6,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $host = "localhost";
     $user = "root";
     $password = "";
-    $database = "EVENT";
+    $database = "event";
 
     $connection = mysqli_connect($host, $user, $password, $database);
 

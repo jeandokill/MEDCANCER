@@ -4,7 +4,7 @@
 $servername = "localhost";
 $username = "root";
 $password = "";
-$dbname = "blog";
+$dbname = "event";
 
 function connectToDatabase() {
     global $servername, $username, $password, $dbname;
@@ -14,12 +14,11 @@ function connectToDatabase() {
     }
     return $conn;
 }
-
 // Function to fetch blog data
 function getBlogs() {
     $conn = connectToDatabase();
 
-    $sql = "SELECT * FROM blogs";
+    $sql = "SELECT * FROM blog";
     $result = $conn->query($sql);
 
     $blogs = array();
@@ -36,10 +35,10 @@ function getBlogs() {
     return $blogs;
 }
 
-// Function to fetch comment count for a blog post
 function getCommentCount($blogId) {
     $conn = connectToDatabase();
 
+    // Update the SQL query to use the correct column name for the blog ID
     $sql = "SELECT * FROM comments WHERE blog_id = $blogId";
     $result = $conn->query($sql);
 
@@ -55,6 +54,7 @@ function getCommentCount($blogId) {
 
     return $comments;
 }
+
 
 // Function to fetch a blog post by its ID
 function getBlogPostById($blogPostId) {

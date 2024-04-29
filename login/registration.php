@@ -6,7 +6,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     if($register->status == 'success'){
         $_SESSION['flashdata']['type']='success';
         $_SESSION['flashdata']['msg'] = ' Account has been registered successfully.';
-        echo "<script>location.href = './login_verification.php';</script>";
+        echo "<script>location.href = './login.php';</script>";
         exit;
     }else{
         echo "<script>console.error(".json_encode($register).");</script>";
@@ -20,8 +20,8 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MEDCANCER REGISTRATION SYSTEM</title>
-    <link href="/EVENT/TheEvent/assets/img/favicon.png" rel="icon">
-    <link href="/EVENT/TheEvent/assets/img/favicon.png" rel="apple-touch-icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
     <link rel="stylesheet" href="./Font-Awesome-master/css/all.min.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="./js/jquery-3.6.0.min.js"></script>
@@ -55,7 +55,7 @@ if($_SERVER['REQUEST_METHOD'] == 'POST'){
                </div>
                <div class="card-body py-4">
                    <div class="container-fluid">
-                   <form action="/EVENT/login/registration.php" method="POST" enctype="multipart/form-data">
+                   <form action="/Medcancer/login/registration.php" method="POST" enctype="multipart/form-data">
                        <?php 
                             if(isset($_SESSION['flashdata'])):
                         ?>

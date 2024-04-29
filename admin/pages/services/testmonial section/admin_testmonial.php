@@ -51,6 +51,8 @@ $testimonials = isset($testimonials) ? $testimonials : array();
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Testimonials</title>
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
     <style>
@@ -109,7 +111,7 @@ $testimonials = isset($testimonials) ? $testimonials : array();
     </div>
 
     <!-- Add testimonial button -->
-    <a href="/EVENT/admin/pages/services/testmonial%20section/add_testmonial.php" class="btn btn-success btn-add-testimonial">Add testmonial
+    <a href="/Medcancer/admin/pages/services/testmonial%20section/add_testmonial.php" class="btn btn-success btn-add-testimonial">Add testmonial
     <div>
 
 <!-- Bootstrap JS and Popper.js (optional) -->

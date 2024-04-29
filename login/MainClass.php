@@ -12,6 +12,103 @@ Class MainClass{
     function db_connect(){
         return $this->db;
     }
+
+
+
+
+
+
+
+    public function resetPasswordRequest($email) {
+        $token = bin2hex(random_bytes(32)); // Generate a unique token
+        $expiration = date("Y-m-d H:i", strtotime("+1 hour"));
+        $updateSql = "UPDATE `users` SET reset_token = '$token', reset_token_expiration = '$expiration' WHERE email = ?";
+        $stmt = $this->db->prepare($updateSql);
+        $stmt->bind_param('s', $email);
+        $stmt->execute();
+    
+        if ($stmt->affected_rows > 0) {
+            $resetLink = "localhost/Medcancer/login/reset_password.php?token=$token&email=$email";
+
+            $this->sendResetEmail($email, $resetLink);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    public function verifyResetToken($token) {
+        $sql = "SELECT id FROM `users` WHERE reset_token = ? AND reset_token_expiration > NOW()";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('s', $token);
+        $stmt->execute();
+        $stmt->store_result();
+        return $stmt->num_rows > 0;
+    }
+    
+    public function resetPassword($token, $newPassword) {
+        $passwordHash = password_hash($newPassword, PASSWORD_DEFAULT);
+        $sql = "UPDATE `users` SET password = ?, reset_token = NULL, reset_token_expiration = NULL WHERE reset_token = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('ss', $passwordHash, $token);
+        $stmt->execute();
+    
+        if ($stmt->affected_rows > 0) {
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    private function sendResetEmail($to, $resetLink) {
+        if(!empty($to)){
+            try{
+                $email = 'info@xyzapp.com';
+                $headers = 'From:' .$email . '\r\n'. 'Reply-To:' .
+                $email. "\r\n" .
+                'X-Mailer: PHP/' . phpversion()."\r\n";
+                $headers .= "MIME-Version: 1.0" . "\r\n";
+                $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
+                // Generate the clickable link
+                $resetLink = "<a href='$resetLink'>$resetLink</a>";
+                // the message
+                $msg = "
+                <html>
+                    <body>
+                        <h2>Welcome to MEDCACANCER RWANDA, </h2>
+                        <p>Here is your reset password link:</p>
+                        <h3><b>$resetLink</b></h3>
+                    </body>
+                </html>
+                ";
+    
+                // send email
+                mail($to,"Reset Password",$msg,$headers);
+                // die("ERROR<br>".$headers."<br>".$msg);
+    
+            }catch(Exception $e){
+                $_SESSION['flashdata']['type']='danger';
+                $_SESSION['flashdata']['msg'] = ' An error occurred while sending the reset password email. Error: '.$e->getMessage();
+            }
+        }
+    }
+    
+
+
+
+    public function updatePassword($email, $newPassword){
+        $password = password_hash($newPassword, PASSWORD_DEFAULT);
+        $sql = "UPDATE `users` SET password = ? WHERE email = ?";
+        $stmt = $this->db->prepare($sql);
+        $stmt->bind_param('ss', $password, $email);
+        $result = $stmt->execute();
+        if($result){
+            return true; // Password updated successfully
+        } else {
+            return false; // Error updating password
+        }
+    }
+    
     public function register(){
         $resp = array(); // Initialize the response array
     
@@ -175,7 +272,7 @@ Class MainClass{
                 $msg = "
                 <html>
                     <body>
-                        <h2>You are Attempting to Login in Medcancer Initative Rwanda</h2>
+                        <h2>Welcome to MEDCACANCER RWANDA, </h2>
                         <p>Here is yout OTP (One-Time PIN) to verify your Identity.</p>
                         <h3><b>".$pin."</b></h3>
                     </body>

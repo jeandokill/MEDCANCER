@@ -104,7 +104,7 @@ if (isset($_POST['about_btn']))
     if ($query_run)
     {
         $_SESSION["success"] = "about us section added";
-        header("LOCATION: ../TheEvent/index.php");
+        header("LOCATION: ../Home/index.php");
     }
     else
     {

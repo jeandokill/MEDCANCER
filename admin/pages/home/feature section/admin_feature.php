@@ -17,7 +17,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_feature'])) {
     file_put_contents('data.php', '<?php $featureContent = ' . var_export($featureContent, true) . '; ?>');
 
     // Redirect back to admin/index.php with a success message
-    header('Location: /EVENT/admin/index.php?success=1');
+    header('Location: /Medcancer/admin/index.php?success=1');
     exit(); // Ensure that the script stops here
 }
 ?>
@@ -27,6 +27,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_feature'])) {
 
     <head>
         <meta charset="UTF-8">
+        <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+        <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Admin Panel</title>
         <!-- Bootstrap CSS link -->

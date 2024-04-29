@@ -22,7 +22,7 @@ if (isset($_POST["login_btn"])) {
     } else if ($usertypes['usertype'] == "user")
     {
         $_SESSION["username"] = $email_login;
-        header("LOCATION:../TheEvent/index.php"); // Redirect to user dashboard
+        header("LOCATION:../Home/index.php"); // Redirect to user dashboard
     } else {
         $_SESSION['status'] = "Email / password is Invalid";
         header("LOCATION: login.php");

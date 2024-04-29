@@ -1,10 +1,9 @@
 <?php
-    include("security.php");
-   
-    $adminUsername = getAdminUsername($connection);
-    include("includes/header.php");
-    include("includes/navbar.php");
+include("security.php");
 
+$adminUsername = getAdminUsername($connection);
+include("includes/header.php");
+include("includes/navbar.php");
 // Step 1: Connect to the database
 $servername = "localhost";
 $username = "root";
@@ -102,11 +101,7 @@ $conn->close();
                     <!-- Sidebar Toggle (Topbar) -->
                     <button id="sidebarToggleTop" class="btn btn-link d-md-none rounded-circle mr-3">
                         <i class="fa fa-bars"></i>
-                    </button>
-
-                
-                    
-
+                    </button> 
                     <!-- Topbar Navbar -->
                     <ul class="navbar-nav ml-auto">
 
@@ -134,6 +129,105 @@ $conn->close();
                             </div>
                         </li>
         
+                       <!-- Notification Bell -->
+                        <ul class="navbar-nav ml-auto">
+                            <li class="nav-item dropdown no-arrow mx-1">
+                                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
+                                    aria-haspopup="true" aria-expanded="false">
+                                    <i class="fas fa-bell fa-fw"></i>
+                                    <!-- Counter - Alerts -->
+                                    <span class="badge badge-danger badge-counter">
+                                        <?php
+                                        // Count the number of new counseling session requests
+                                        $sql = "SELECT COUNT(*) AS new_requests FROM council WHERE status = 'new'";
+                                        $result = $connection->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            $row = $result->fetch_assoc();
+                                            echo $row["new_requests"];
+                                        } else {
+                                            echo "0";
+                                        }
+                                        ?>
+                                    </span>
+                                </a>
+                                <!-- Dropdown - Notifications -->
+                                <div class="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                                    aria-labelledby="alertsDropdown">
+                                    <h6 class="dropdown-header">
+                                        Notifications
+                                    </h6>
+                                    <!-- New Alerts -->
+                                    <?php
+                                    // Retrieve the latest counseling session requests
+                                    $sql = "SELECT *, DATE_FORMAT(timestamp, '%M %e, %Y') AS formatted_timestamp FROM council WHERE status = 'new' ORDER BY id DESC LIMIT 5";
+                                    $result = $connection->query($sql);
+                                    if ($result->num_rows > 0) {
+                                        while ($row = $result->fetch_assoc()) {
+                                            // Generate the URL with the session ID
+                                            $session_id = $row['id'];
+                                            $view_session_url = "view_council_session.php?id=$session_id";
+
+                                            echo '<a class="dropdown-item d-flex align-items-center" href="'.$view_session_url.'">';
+                                            echo '<div class="mr-3">';
+                                            echo '<div class="icon-circle bg-primary">';
+                                            echo '<i class="fas fa-file-alt text-white"></i>';
+                                            echo '</div>';
+                                            echo '</div>';
+                                            echo '<div>';
+                                            // Check if the formatted timestamp is available
+                                            if (isset($row["formatted_timestamp"])) {
+                                                echo '<div class="small text-gray-500">' . $row["formatted_timestamp"] . '</div>';
+                                            } else {
+                                                echo '<div class="small text-gray-500">' . date("F j, Y", strtotime($row["timestamp"])) . '</div>';
+                                            }
+                                            echo '<span class="font-weight-bold">A new counseling session request has been submitted!</span>';
+                                            echo '</div>';
+                                            echo '</a>';
+                                        }
+                                    } else {
+                                        echo '<a class="dropdown-item text-center small text-gray-500" href="#">No new requests</a>';
+                                    }
+                                    ?>
+                                
+                                    <!-- Read Alerts -->
+                                    <a class="dropdown-item text-center small text-gray-500" href="#" id="readAlertsToggle">Read Alerts</a>
+                                    <div id="readAlertsSection" style="display: none;">
+                                        <!-- PHP code to retrieve and display read alerts -->
+                                        <!-- Example code: -->
+                                        <?php
+                                        $sql = "SELECT *, DATE_FORMAT(timestamp, '%M %e, %Y') AS formatted_timestamp FROM council WHERE status = 'read' ORDER BY id DESC LIMIT 5";
+                                        $result = $connection->query($sql);
+                                        if ($result->num_rows > 0) {
+                                            while ($row = $result->fetch_assoc()) {
+                                                $session_id = $row['id'];
+                                                $view_session_url = "view_council_session.php?id=$session_id";
+                                                echo '<a class="dropdown-item d-flex align-items-center" href="'.$view_session_url.'">';
+                                                echo '<div class="mr-3">';
+                                                echo '<div class="icon-circle bg-secondary">';
+                                                echo '<i class="fas fa-file-alt text-white"></i>';
+                                                echo '</div>';
+                                                echo '</div>';
+                                                echo '<div class="flex-grow-1">';
+                                                if (isset($row["formatted_timestamp"])) {
+                                                    echo '<div class="small text-gray-500">' . $row["formatted_timestamp"] . '</div>';
+                                                } else {
+                                                    echo '<div class="small text-gray-500">' . date("F j, Y", strtotime($row["timestamp"])) . '</div>';
+                                                }
+                                                echo '<span class="font-weight-bold">Counseling session request</span>';
+                                                echo '</div>';
+                                                // Delete button
+                                                echo '<div class="ml-auto small text-gray-500"><a href="delete_alert.php?id='.$session_id.'";>&nbsp;x</a></div>'; // "x" sign with delete link
+                                                echo '</a>';
+                                            }
+                                        } else {
+                                            echo '<a class="dropdown-item text-center small text-gray-500" href="#">No read alerts</a>';
+                                        }
+                                        ?>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
 
                         <div class="topbar-divider d-none d-sm-block"></div>
 
@@ -260,7 +354,7 @@ $conn->close();
                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $overdueCount; ?></div>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-calendar-times fa-2x text-gray-300"></i>
+                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                 </div>
             </div>
         </div>
@@ -294,7 +388,7 @@ $conn->close();
                     <div class="h5 mb-0 font-weight-bold text-gray-800"><?php echo $pendingCount; ?></div>
                 </div>
                 <div class="col-auto">
-                    <i class="fas fa-comments fa-2x text-gray-300"></i>
+                    <i class="fas fa-clipboard-list fa-2x text-gray-300"></i>
                 </div>
             </div>
         </div>
@@ -319,6 +413,15 @@ $conn->close();
 <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+
+<script>
+    // Toggle visibility of Read Alerts section
+    $(document).ready(function() {
+        $("#readAlertsToggle").click(function() {
+            $("#readAlertsSection").slideToggle();
+        });
+    });
+</script>
 
 
 

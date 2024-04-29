@@ -5,7 +5,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $host = "localhost";
     $user = "root";
     $password = "";
-    $database = "EVENT";
+    $database = "event";
 
     $connection = mysqli_connect($host, $user, $password, $database);
 
@@ -32,7 +32,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         mysqli_close($connection);
 
         // Redirect to admin panel or wherever you want
-        header("Location: /EVENT/admin/index.php");
+        header("Location: /Medcancer/admin/index.php");
         exit();
     } else {
         echo "Sorry, there was an error uploading your file.";

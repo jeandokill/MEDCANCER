@@ -61,8 +61,8 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login with OTP</title>
-    <link href="/EVENT/TheEvent/assets/img/favicon.png" rel="icon">
-    <link href="/EVENT/TheEvent/assets/img/favicon.png" rel="apple-touch-icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
     <link rel="stylesheet" href="./Font-Awesome-master/css/all.min.css">
     <link rel="stylesheet" href="./css/bootstrap.min.css">
     <script src="./js/jquery-3.6.0.min.js"></script>
@@ -100,7 +100,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
                </div>
                <div class="card-body py-4">
                    <div class="container-fluid">
-                       <form action="/EVENT/login/login_verification.php" method="POST">
+                       <form action="/Medcancer/login/login_verification.php" method="POST">
                            <input type="hidden" name="id" value="<?= isset($id) ? $id : '' ?>">
                         <?php 
                                 if(isset($_SESSION['flashdata'])):

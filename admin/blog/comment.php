@@ -10,11 +10,15 @@ function getComments($blogId) {
 function addComment($blogId, $email, $comment) {
     $comments = loadCommentsFromFile();
 
-    // Add the new comment
+    // Get user details (including profile picture) by email
+    $userDetails = getUserDetailsByEmail($email);
+
+    // Add the new comment with user details
     $newComment = [
         'email' => $email,
         'comment' => $comment,
         'date' => date('Y-m-d H:i:s'), // You can adjust the date format
+        'profile_picture' => $userDetails['profile_picture'] // Add profile picture to the comment
     ];
 
     // Add the comment to the array
@@ -26,6 +30,7 @@ function addComment($blogId, $email, $comment) {
     // Return the comment ID (useful for identifying the added comment)
     return count($comments[$blogId]) - 1;
 }
+
 
 // Function to load comments from file
 function loadCommentsFromFile() {

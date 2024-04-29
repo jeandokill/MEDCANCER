@@ -28,7 +28,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_services'])) {
     file_put_contents('data_services.php', '<?php $servicesContent = ' . var_export($servicesContent, true) . '; ?>');
 
     // Redirect back to admin/index.php
-    header('Location: /EVENT/admin/index.php');
+    header('Location: /Medcancer/admin/index.php');
     exit();
 }
 ?>
@@ -37,6 +37,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_services'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Admin Panel</title>
     <!-- Bootstrap CSS link -->
@@ -67,7 +69,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_services'])) {
         <h2 class="mb-4">Services Content</h2>
 
         <!-- Section Title and Subtitle -->
-        <form method="post" action="/EVENT/admin/pages/services/features%20section/update_section.php">
+        <form method="post" action="/Medcancer/admin/pages/services/features%20section/update_section.php">
             <!-- Section Title and Subtitle -->
             <div class="form-group">
                 <label for="section_title">Section Title</label>
@@ -99,9 +101,9 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_services'])) {
                         <p class="card-text"><?php echo $card['content']; ?></p>
                         <div class="d-flex justify-content-between">
                             <!-- Edit Button -->
-                            <a href="/EVENT/admin/pages/services/features%20section/edit_card.php?index=<?php echo $index; ?>" class="btn btn-primary">Edit</a>
+                            <a href="/Medcancer/admin/pages/services/features%20section/edit_card.php?index=<?php echo $index; ?>" class="btn btn-primary">Edit</a>
                             <!-- Delete Button -->
-                            <a href="/EVENT/admin/pages/services/features%20section/delete_card.php?index=<?php echo $index; ?>" class="btn btn-danger delete-button">Delete</a>
+                            <a href="/Medcancer/admin/pages/services/features%20section/delete_card.php?index=<?php echo $index; ?>" class="btn btn-danger delete-button">Delete</a>
                         </div>
                     </div>
                 </div>
@@ -126,7 +128,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_services'])) {
 
 
         <!-- Add Card Button -->
-        <a href="/EVENT/admin/pages/services/features%20section/add_card.php" class="btn btn-success btn-add-card">Add Card</a>
+        <a href="/Medcancer/admin/pages/services/features%20section/add_card.php" class="btn btn-success btn-add-card">Add Card</a>
     </div>
 
     <!-- Include necessary scripts here -->

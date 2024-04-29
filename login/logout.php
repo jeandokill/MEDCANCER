@@ -7,4 +7,4 @@ foreach($_SESSION as $k =>$v){
     unset($_SESSION[$k]);
 }
 
-echo "<script>location.replace('/EVENT/login/login.php');</script>";
+echo "<script>location.replace('/Medcancer/login/login.php');</script>";

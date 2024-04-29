@@ -30,6 +30,8 @@ $galleryImages = getGalleryImages();
 
 <!-- Bootstrap styles -->
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+<link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+<link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
 
 <!-- Display existing images in a Bootstrap table -->
 <div class="container mt-5">
@@ -76,7 +78,7 @@ $galleryImages = getGalleryImages();
 </div>
 
 
-<a href="/EVENT/admin/index.php" class="btn btn-secondary mt-3" id="backbtn">Back to admin panel</a>
+<a href="/Medcancer/admin/index.php" class="btn btn-secondary mt-3" id="backbtn">Back to admin panel</a>
         <style>
             #backbtn
              {

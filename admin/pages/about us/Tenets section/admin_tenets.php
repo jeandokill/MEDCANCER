@@ -29,7 +29,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_tenets'])) {
     file_put_contents('data.php', '<?php $tenetsContent = ' . var_export($tenetsContent, true) . '; ?>');
 
     // Redirect back to admin/index.php with a success message
-    header('Location: /EVENT/admin/index.php?success=1');
+    header('Location: /Medcancer/admin/index.php?success=1');
     exit(); // Ensure that the script stops here
 }
 ?>

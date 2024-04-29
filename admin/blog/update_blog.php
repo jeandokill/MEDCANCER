@@ -5,7 +5,7 @@ function getBlogById($blogId) {
     global $conn;
 
     // Query to retrieve blog details by ID
-    $sql = "SELECT * FROM blogs WHERE id = $blogId";
+    $sql = "SELECT * FROM blog WHERE id = $blogId";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -24,6 +24,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $title = $_POST["title"];
     $authorName = $_POST['author_name'];
     $publishDate = $_POST['publish_date'];
+    $author_social_twitter = $_POST["author_social_twitter"];
+    $author_social_facebook = $_POST["author_social_facebook"];
+    $author_social_instagram = $_POST["author_social_instagram"];
     $paragraph = $_POST['paragraph'];
     $blockquote = $_POST['blockquote']; // Fix field name
     $content1Subtitle = $_POST['content1_subtitle'];
@@ -59,12 +62,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $contentImage = $contentImagePath . $contentImageName;
     }
 
-    // Update data in 'blogs' table
-    $sql = "UPDATE blogs SET 
+    // Update data in 'blog' table
+    $sql = "UPDATE blog SET 
     title=?, 
     author_name=?, 
     publish_date=?,  
     paragraph=?, 
+    author_social_twitter=?,
+    author_social_facebook=?,
+    author_social_instagram=?,
     blockquote=?, 
     content1_subtitle=?, 
     content1_content=?, 
@@ -77,7 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
 // ...
 
-$bindParams = ['sssssssssssss', &$title, &$authorName, &$publishDate, &$paragraph, &$blockquote, &$content1Subtitle, &$content1Content, &$content2Subtitle, &$content2Content, &$content3Subtitle, &$content3Content, &$contentImage, &$authorBio];
+$bindParams = ['ssssssssssssssss', &$title, &$authorName, &$publishDate, &$paragraph, &$author_social_twitter, &$author_social_facebook, &$author_social_instagram, &$blockquote, &$content1Subtitle, &$content1Content, &$content2Subtitle, &$content2Content, &$content3Subtitle, &$content3Content, &$contentImage, &$authorBio];
 
 // Check if image is provided for update
 if (!empty($image)) {
@@ -122,6 +128,8 @@ if ($stmt->execute()) {
 <html lang="en">
 
 <head>
+<link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
     <style>
         .btn {
             cursor: pointer; /* Add this style to indicate it's clickable */
@@ -137,7 +145,7 @@ if ($stmt->execute()) {
 
 <body>
     <div class="btn">
-        <a href="admin_blog.php">
+        <a href="add_blog.php">
             <h1>BACK ON BLOG PAGE</h1>
         </a>
     </div>

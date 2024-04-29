@@ -3,7 +3,7 @@ function getBlogById($blogId) {
     global $conn;
 
     // Query to retrieve blog details by ID
-    $sql = "SELECT * FROM blogs WHERE id = $blogId";
+    $sql = "SELECT * FROM blog WHERE id = $blogId";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {

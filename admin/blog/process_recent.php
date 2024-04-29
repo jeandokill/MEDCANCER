@@ -21,6 +21,8 @@ $conn->close();
 <html lang="en">
 
 <head>
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
     <style>
         .btn {
             cursor: pointer; /* Add this style to indicate it's clickable */

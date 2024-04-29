@@ -30,7 +30,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['update_f1'])) {
     file_put_contents('f1_code.php', '<?php $f1Content = ' . var_export($f1Content, true) . '; ?>');
 
     // Redirect back to admin/index.php
-    header('Location: /EVENT/admin/index.php');
+    header('Location: /Medcancer/admin/index.php');
     exit(); // Ensure that the script stops here
 }
 
@@ -59,6 +59,8 @@ function saveImage($inputName, $uploadDir) {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
     <title>Admin Panel - F1 Section</title>
     <!-- Bootstrap CSS link -->
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">

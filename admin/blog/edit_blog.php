@@ -1,11 +1,9 @@
 <?php
-
-
 function getBlogById($blogId) {
     global $conn;
 
     // Query to retrieve blog details by ID
-    $sql = "SELECT * FROM blogs WHERE id = $blogId";
+    $sql = "SELECT * FROM blog WHERE id = $blogId";
     $result = $conn->query($sql);
 
     if ($result->num_rows > 0) {
@@ -18,19 +16,42 @@ function getBlogById($blogId) {
     }
 }
 ?>
-
-
-
-
 <!DOCTYPE html>
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
     <title>Edit Blog</title>
     <!-- Bootstrap CSS from CDN -->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous">
+    <!-- TinyMCE script -->
+    <script src="https://cdn.jsdelivr.net/npm/tinymce@5.10.2/tinymce.min.js"></script>
+    <script>
+        tinymce.init({
+            selector: 'textarea',
+            width: 800,
+            height: 300,
+            plugins: [
+                'advlist', 'autolink', 'link', 'image', 'lists', 'charmap', 'preview', 'anchor', 'pagebreak',
+                'searchreplace', 'wordcount', 'visualblocks', 'code', 'fullscreen', 'insertdatetime', 'media',
+                'table', 'emoticons', 'template', 'codesample'
+            ],
+            toolbar: 'undo redo | styles | bold italic underline | alignleft aligncenter alignright alignjustify |' +
+                'bullist numlist outdent indent | link image | print preview media fullscreen | ' +
+                'forecolor backcolor emoticons',
+            menu: {
+                favs: {
+                    title: 'menu',
+                    items: 'code visualaid | searchreplace | emoticons'
+                }
+            },
+            menubar: 'favs file edit view insert format tools table',
+            content_style: 'body{font-family:Helvetica,Arial,sans-serif; font-size:16px}'
+        });
+    </script>
     <style>
         body {
             background-color: #f8f9fa;
@@ -202,7 +223,7 @@ function getBlogById($blogId) {
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-eWpAV2MIIS2On8UWGOqz76hQagNYOf+C4OvKx9vaLOhIfB+jj6jo23lERdS4lFqJ" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js" integrity="sha384-pzjw8ZNUq0FmTqKepxZ6KC50GBF2q3fMz6fRA5ZAjXMJFKqfRt/5aiQACg/7M9D" crossorigin="anonymous"></script>
 
-    <a href="/EVENT/admin/index.php" class="btn btn-secondary mt-3" id="backbtn">Back to admin panel</a>
+    <a href="/Medcancer/admin/index.php" class="btn btn-secondary mt-3" id="backbtn">Back to admin panel</a>
         <style>
             #backbtn
              {

@@ -33,7 +33,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_card'])) {
     file_put_contents('data.php', '<?php $servicesContent = ' . var_export($servicesContent, true) . '; ?>');
 
     // Redirect back to admin/index.php
-    header('Location: /EVENT/admin/index.php');
+    header('Location: /Medcancer/admin/index.php');
     exit();
 }
 ?>
@@ -42,6 +42,8 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST' && isset($_POST['add_card'])) {
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="icon">
+    <link href="/Medcancer/Home/assets/img/favicon.png" rel="apple-touch-icon">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Add Card - Admin Panel</title>
     <!-- Bootstrap CSS link -->

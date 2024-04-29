@@ -4,10 +4,10 @@
   'image' => 'uploads/hi.jpg',
   'progress_values' => 
   array (
-    0 => '80',
+    0 => '100',
     1 => '90',
     2 => '75',
-    3 => '15',
+    3 => '50',
   ),
   'progress_names' => 
   array (

@@ -9,7 +9,7 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
         $conn->begin_transaction();
 
         // Check if the blog exists in the 'blogs' table
-        $checkBlogSql = "SELECT * FROM blogs WHERE id = $blogId";
+        $checkBlogSql = "SELECT * FROM blog WHERE id = $blogId";
         $result = $conn->query($checkBlogSql);
 
         if ($result->num_rows > 0) {
@@ -24,13 +24,13 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET["id"])) {
 
             if ($stmt->execute()) {
                 // Delete the blog from the 'blogs' table
-                $deleteSql = "DELETE FROM blogs WHERE id = $blogId";
+                $deleteSql = "DELETE FROM blog WHERE id = $blogId";
                 $conn->query($deleteSql);
 
                 // Commit the transaction
                 $conn->commit();
 
-                header("Location: /EVENT/admin/blog/recent_post.php");
+                header("Location: /Medcancer/admin/blog/recent_post.php");
                 exit();
 
             } else {

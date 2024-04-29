@@ -1,5 +1,43 @@
+<style>
+/* Custom CSS to fix sidebar position */
+@media (max-width: 768px) {
+    .sticky-sidebar {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        z-index: 1030;
+        display: block;
+        overflow-y: auto;
+        width: 250px; /* Adjust the width as needed */
+        background-color: #343a40; /* Add a background color for better visibility */
+        transition: all 0.3s ease; /* Add smooth transition */
+    }
+    
+    .sticky-sidebar.active {
+        left: 0; /* Show the sidebar */
+    }
+    
+    .overlay {
+        display: none;
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent overlay */
+        z-index: 1029; /* Ensure overlay is below the sidebar */
+    }
+}
+</style>
+
+
+
+
+
 <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
     <!-- Sidebar - Brand -->
+
     <a class="sidebar-brand d-flex align-items-center justify-content-center" href="index.php">
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-user-shield"></i>
@@ -18,7 +56,7 @@
         </a>
     </li>
     <li class="nav-item">
-        <a class="nav-link" href="/EVENT/chat/index.php">
+        <a class="nav-link" href="https://dashboard.tawk.to/#/dashboard/662b4bb21ec1082f04e733b7">
             <i class="fas fa-comments"></i>
             <span>CHATROOM</span>
         </a>
@@ -109,13 +147,9 @@
 
                                     <!-- Add more sections as needed -->
                                 </div>
-                            </div> 
-                                       
-                           
+                            </div>    
                 </div>
-
     </li>
-
     <!-- Nav Item - Admin Profile -->
     <li class="nav-item">
         <a class="nav-link" href="register.php">
@@ -124,9 +158,22 @@
         </a>
     </li>
 
+
+    <!-- Nav Item - Councils Dropdown -->
+    <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="councilsDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            <i class="fas fa-users"></i>
+            <span>Councils</span>
+        </a>
+        <div class="dropdown-menu" aria-labelledby="councilsDropdown">
+            <a class="dropdown-item" href="/Medcancer/admin/councils/add_councils.php">Add Council</a>
+            <a class="dropdown-item" href="/Medcancer/admin/councils/available.php">Available Councils</a>
+        </div>
+    </li>
+
     <!-- Nav Item - Blog -->
     <li class="nav-item">
-        <a class="nav-link" href="blog/admin_blog.php">
+        <a class="nav-link" href="blog/add_blog.php">
             <i class="fas fa-blog"></i>
             <span>Blog</span>
         </a>
@@ -150,7 +197,7 @@
 
     <!-- Nav Item - Tasks Management -->
     <li class="nav-item">
-        <a class="nav-link" href="/EVENT/admin/task management/task.php">
+        <a class="nav-link" href="/Medcancer/admin/task management/task.php">
             <i class="fas fa-tasks"></i>
             <span>Tasks management</span>
         </a>
@@ -167,10 +214,10 @@
             data-parent="#accordionSidebar">
             <div class="bg-white py-2 collapse-inner rounded">
                 <h6 class="collapse-header">Custom Utilities:</h6>
-                <a class="collapse-item" href="/EVENT/admin/donations/received.php">Donations received</a>
-                <a class="collapse-item" href="/EVENT/admin/donations/use.php">Donations used</a>
-                <a class="collapse-item" href="/EVENT/admin/donations/grants.php">Grants from Sponsors</a>
-                <a class="collapse-item" href="/EVENT/admin/donations/statement.php">USAGE SUMMARY</a>
+                <a class="collapse-item" href="/Medcancer/admin/donations/received.php">Donations received</a>
+                <a class="collapse-item" href="/Medcancer/admin/donations/use.php">Donations used</a>
+                <a class="collapse-item" href="/Medcancer/admin/donations/grants.php">Grants from Sponsors</a>
+                <a class="collapse-item" href="/Medcancer/admin/donations/statement.php">USAGE SUMMARY</a>
             </div>
         </div>
     </li>
@@ -211,6 +258,30 @@
         </div>
     </div>
 </ul>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+    var sidebar = document.querySelector('.sticky-sidebar');
+    var overlay = document.querySelector('.overlay');
+    var sidebarToggle = document.querySelector('#sidebarToggle');
+
+    // Toggle sidebar and overlay when sidebarToggle is clicked
+    sidebarToggle.addEventListener('click', function() {
+        sidebar.classList.toggle('active');
+        overlay.style.display = sidebar.classList.contains('active') ? 'block' : 'none';
+    });
+
+    // Close sidebar and overlay when clicking outside the sidebar
+    document.addEventListener('click', function(event) {
+        if (!sidebar.contains(event.target) && !sidebarToggle.contains(event.target)) {
+            sidebar.classList.remove('active');
+            overlay.style.display = 'none';
+        }
+    });
+});
+</script>
+
 
 
 <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
